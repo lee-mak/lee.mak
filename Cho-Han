@@ -1,0 +1,46 @@
+import random
+
+cash = 100
+
+name = input("Please Enter a Username: ")
+print('\n')
+print("Hello: " + name)
+print("Lets Play a Game of Cho-Han!!! ")
+print("Available cash winnings: " + "$", cash)
+odd_or_even = str(input("Please enter odd or even: "))
+place_wager = int(input("Please Enter Your Wager: "))
+
+
+def cho_han(odd_even, wager_amount):
+    print("You placed: " + "$", place_wager, " Dollars on: ", odd_or_even)
+    print('\n')
+
+    dice_1 = random.randint(1, 6)
+    dice_2 = random.randint(1, 6)
+
+    roll = input("Press *Enter* to roll both dice ")
+    print(roll)
+    print('\n')
+    print("Dice 1 = ", dice_1)
+    print("Dice 2 = ", dice_2)
+    print('\n')
+
+    sum_of_two_dice = (dice_1 + dice_2) % 2
+
+    if sum_of_two_dice == 0 and odd_even == "even":
+        cash_total = wager_amount + cash
+        print("Demo - (でも) - Even")
+        print("Anata wa kachimasu - (あなたは勝ちます) - You Won!!!", cash_total)
+        return cash_total
+    if sum_of_two_dice == 0 and odd_even == "odd":
+        cash_total = wager_amount + cash
+        print("Kawatta - (変わった) - Odd")
+        print("Anata wa kachimasu - (あなたは勝ちます) - You Won!!!", cash_total)
+        return cash_total
+    else:
+        cash_total = cash - wager_amount
+        print("Anata no makedesu - (あなたの負けです) - Sorry, You Lost!!!", cash_total)
+        return cash_total
+
+
+cho_han(odd_or_even, place_wager)
