@@ -1,0 +1,32 @@
+import random
+
+money = 100
+
+#Write your game of chance functions here
+def coin(guess, bet):
+
+    flip = random.randint(1, 2)
+
+    if flip == 1:
+        print('The coin toss result was heads')
+
+    if flip == 2:
+        print('The coin toss result was tails')
+
+    if (flip == 1 and guess.lower() == 'heads'):
+        print('You guessed heads and you got it right! You won '+ str(bet) +'$!!')
+        return +bet
+
+    elif (flip == 2 and guess.lower() == 'tails'):
+        print('You guessed tails and you got it right! You won '+ str(bet) +'$!!')
+        return +bet
+
+    else:
+        print('Your guess was wrong, you lost '+str(bet)+'$!!')
+        return -bet
+
+
+
+
+#Call your game of chance functions here
+coin("tails", 25)
